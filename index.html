@@ -1,347 +1,729 @@
-import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Phone, ExternalLink, MapPin } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Hafiz - AI/ML Engineer & Researcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-export default function Portfolio() {
-  const [activeTab, setActiveTab] = useState('about');
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background: #ffffff;
+        }
 
-  const experiences = [
-    {
-      title: 'Research Assistant',
-      company: 'Universitas Syiah Kuala',
-      period: 'May 2022 – Nov. 2024',
-      location: 'Banda Aceh, Indonesia',
-      description: 'Collaborated with Prof. Dr. Ir. Roslidar on breast thermal image classification research using CNN-XGBoost with VGG16 architecture.',
-      highlights: [
-        'Developed balanced dataset of 1,842 medical images across 3 classes',
-        'Achieved 73.17% validation accuracy with ResNet50-XGBoost model',
-        'Implemented deep learning pipelines with VGG16 and ResNet50',
-        'Co-authored research paper published in 2024 IEEE CENIM Conference'
-      ]
-    },
-    {
-      title: 'Machine Learning Student',
-      company: 'Bangkit Academy',
-      period: 'Feb. 2022 – Jul. 2022',
-      location: 'Google-led Program, Indonesia',
-      description: 'Selected as 1 of 3,100 students for Google\'s premier academy program focused on developing world-class technical talent.',
-      highlights: [
-        'Completed comprehensive Machine Learning curriculum (5 certificates)',
-        'Earned TensorFlow Developer Certificate',
-        'Led development of BADI (Business Analytics Daily Income) capstone project',
-        'Mastered AI concepts for solving diverse ML problems'
-      ]
-    },
-    {
-      title: 'Internship Trainee',
-      company: 'Telkom Indonesia',
-      period: 'Jul. 2022 – Aug. 2022',
-      location: 'Banda Aceh, Indonesia',
-      description: 'Assigned to Integrated Operation Center (IOC) at Plasa Telkom.',
-      highlights: [
-        'Specialized in IPv6, Remote Ticketing, and Assurance systems',
-        'Analyzed and optimized telecommunications services across Aceh region',
-        'Gained hands-on experience in network operations and service delivery'
-      ]
-    }
-  ];
+        .header {
+            border-bottom: 1px solid #e5e7eb;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
 
-  const projects = [
-    {
-      title: 'Breast Thermal Image Classification System',
-      period: 'May 2022 – Nov. 2024',
-      tech: ['Python', 'TensorFlow', 'XGBoost', 'VGG16', 'ResNet50'],
-      description: 'Developed CNN-XGBoost hybrid model for medical image classification achieving 73%+ validation accuracy. Implemented transfer learning with VGG16 and ResNet50 architectures for enhanced feature extraction.',
-      link: '#'
-    },
-    {
-      title: 'BADI (Business Analytics Daily Income)',
-      period: 'Feb. 2022 – Jul. 2022',
-      tech: ['Python', 'Machine Learning', 'Data Analytics'],
-      description: 'Product-based machine learning solution for business analytics developed during Bangkit Academy program. Applied advanced ML techniques for income prediction and comprehensive business insights generation.',
-      link: '#'
-    }
-  ];
+        .header-content {
+            max-width: 896px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  const education = {
-    school: 'Universitas Syiah Kuala',
-    degree: 'Bachelor of Computer Engineering',
-    period: 'Aug. 2019 – Nov. 2024',
-    gpa: '3.49/4.00',
-    location: 'Banda Aceh, Indonesia',
-    coursework: ['Machine Learning', 'Deep Learning', 'Computer Vision', 'Data Structures & Algorithms', 'Software Engineering'],
-    exchanges: [
-      { uni: 'Universitas AMIKOM Yogyakarta', course: 'Ethical Hacking and Cybersecurity', grade: '4.0/4.0' },
-      { uni: 'Universitas Dian Nuswantoro', course: 'Mobile Computing, Data Mining', grade: '3.79/4.0' },
-      { uni: 'Universitas Gadjah Mada', course: 'Digital Image Processing', grade: '3.25/4.0' },
-      { uni: 'Universitas Indonesia', course: 'Information Security', grade: '3.0/4.0' }
-    ]
-  };
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+        }
 
-  const skills = {
-    'Programming': ['Python', 'SQL', 'JavaScript'],
-    'ML/AI Frameworks': ['TensorFlow', 'Scikit-learn', 'XGBoost', 'Pandas', 'NumPy'],
-    'Deep Learning': ['CNN', 'VGG16', 'ResNet50', 'Computer Vision'],
-    'Tools': ['Google Colab', 'Jupyter Notebook', 'Git', 'GitHub']
-  };
+        .header-links {
+            display: flex;
+            gap: 1rem;
+        }
 
-  const certifications = [
-    { title: 'IEEE Conference Publication', year: '2024', org: 'IEEE CENIM Conference', note: 'Indexed in IEEE Xplore' },
-    { title: 'TensorFlow Developer Certificate', year: '2022', org: 'Google', note: 'Computer Vision, CNNs, NLP' },
-    { title: 'Bangkit Academy Graduate', year: '2022', org: 'Google-led Program', note: 'Top 3,100 students' },
-    { title: 'Machine Learning Specialization', year: '2022', org: 'Coursera', note: '5 certificates' }
-  ];
+        .header-links a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
 
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b border-gray-200 bg-white sticky top-0 z-50">
-        <div className="max-w-4xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-xl font-semibold text-gray-900">Muhammad Hafiz</h1>
-            <div className="flex items-center gap-4">
-              <a href="https://github.com/HyzenTech" target="_blank" rel="noopener noreferrer" 
-                 className="text-gray-600 hover:text-gray-900 transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="https://linkedin.com/in/muhammadhafiz1206" target="_blank" rel="noopener noreferrer"
-                 className="text-gray-600 hover:text-gray-900 transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="mailto:techhafiz81@gmail.com"
-                 className="text-gray-600 hover:text-gray-900 transition-colors">
-                <Mail className="w-5 h-5" />
-              </a>
+        .header-links a:hover {
+            color: #111827;
+        }
+
+        .main {
+            max-width: 896px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .intro {
+            margin-bottom: 3rem;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .contact-info a {
+            color: #6b7280;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: #111827;
+        }
+
+        .tabs {
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .tab {
+            padding-bottom: 0.75rem;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #6b7280;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        .tab:hover {
+            color: #111827;
+            border-bottom-color: #d1d5db;
+        }
+
+        .tab.active {
+            color: #111827;
+            border-bottom-color: #111827;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item {
+            margin-bottom: 1rem;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .education-school {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .education-degree {
+            color: #374151;
+        }
+
+        .education-period {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .education-meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .coursework-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background: #f3f4f6;
+            color: #374151;
+            border-radius: 0.25rem;
+        }
+
+        .exchanges {
+            margin-top: 1rem;
+        }
+
+        .exchange-item {
+            font-size: 0.875rem;
+            color: #6b7280;
+            padding-left: 1rem;
+            border-left: 2px solid #e5e7eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .exchange-item strong {
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            margin-bottom: 1rem;
+        }
+
+        .skill-category-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            font-size: 0.875rem;
+            padding: 0.25rem 0.75rem;
+            background: #f3f4f6;
+            color: #374151;
+            border-radius: 9999px;
+        }
+
+        .cert-item {
+            border-left: 2px solid #e5e7eb;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-title {
+            font-weight: 500;
+            color: #111827;
+        }
+
+        .cert-year {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .cert-org {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .cert-note {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            margin-top: 0.25rem;
+        }
+
+        .experience-item {
+            border-left: 2px solid #e5e7eb;
+            padding-left: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .experience-company {
+            color: #374151;
+        }
+
+        .experience-location {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .experience-description {
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        .highlights {
+            list-style: none;
+        }
+
+        .highlights li {
+            font-size: 0.875rem;
+            color: #6b7280;
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlights li:before {
+            content: "•";
+            color: #d1d5db;
+            margin-top: 0.25rem;
+        }
+
+        .project-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: border-color 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: #d1d5db;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .project-link {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .project-link:hover {
+            color: #111827;
+        }
+
+        .project-period {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section {
+            max-width: 672px;
+        }
+
+        .contact-intro {
+            color: #374151;
+            margin-bottom: 2rem;
+            line-height: 1.75;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item:hover {
+            color: #111827;
+        }
+
+        .contact-item-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .contact-item-label {
+            font-weight: 500;
+        }
+
+        .contact-item-value {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .footer {
+            border-top: 1px solid #e5e7eb;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 896px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .intro-title {
+                font-size: 1.5rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            .tabs {
+                overflow-x: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">Muhammad Hafiz</h1>
+            <div class="header-links">
+                <a href="https://github.com/HyzenTech" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/muhammadhafiz1206" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="mailto:techhafiz81@gmail.com" title="Email">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
             </div>
-          </div>
         </div>
-      </header>
+    </header>
 
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-6 py-12">
-        {/* Intro */}
-        <div className="mb-12">
-          <div className="flex items-center gap-2 text-gray-600 mb-4">
-            <MapPin className="w-4 h-4" />
-            <span className="text-sm">Banda Aceh, Indonesia</span>
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            AI/ML Engineer & Researcher
-          </h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            Recent Computer Engineering graduate with 2+ years of research experience in Artificial Intelligence and Machine Learning. Published researcher in IEEE conference with expertise in deep learning, computer vision, and model optimization.
-          </p>
-          <div className="flex flex-wrap gap-3 text-sm">
-            <a href="mailto:techhafiz81@gmail.com" className="text-gray-600 hover:text-gray-900 flex items-center gap-1">
-              <Mail className="w-4 h-4" />
-              techhafiz81@gmail.com
-            </a>
-            <a href="tel:+6285117812061" className="text-gray-600 hover:text-gray-900 flex items-center gap-1">
-              <Phone className="w-4 h-4" />
-              +62 851-1781-2061
-            </a>
-          </div>
-        </div>
-
-        {/* Tabs */}
-        <div className="border-b border-gray-200 mb-8">
-          <div className="flex gap-6">
-            {['about', 'experience', 'projects', 'contact'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`pb-3 px-1 text-sm font-medium border-b-2 transition-colors ${
-                  activeTab === tab
-                    ? 'border-gray-900 text-gray-900'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
-                }`}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* About Tab */}
-        {activeTab === 'about' && (
-          <div className="space-y-12">
-            {/* Education */}
-            <section>
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Education</h3>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="font-semibold text-gray-900">{education.school}</h4>
-                      <p className="text-gray-700">{education.degree}</p>
-                    </div>
-                    <span className="text-sm text-gray-600">{education.period}</span>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-3">GPA: {education.gpa} • {education.location}</p>
-                  <div className="mb-4">
-                    <p className="text-sm font-medium text-gray-700 mb-2">Relevant Coursework:</p>
-                    <div className="flex flex-wrap gap-2">
-                      {education.coursework.map((course, idx) => (
-                        <span key={idx} className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">
-                          {course}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-700 mb-3">Academic Exchange Programs (Kampus Merdeka):</p>
-                    <div className="space-y-2">
-                      {education.exchanges.map((ex, idx) => (
-                        <div key={idx} className="text-sm text-gray-600 pl-4 border-l-2 border-gray-200">
-                          <span className="font-medium">{ex.uni}:</span> {ex.course} ({ex.grade})
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Skills */}
-            <section>
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Technical Skills</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {Object.entries(skills).map(([category, items]) => (
-                  <div key={category}>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-3">{category}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {items.map((skill, idx) => (
-                        <span key={idx} className="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded-full">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Certifications */}
-            <section>
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Certifications & Achievements</h3>
-              <div className="space-y-4">
-                {certifications.map((cert, idx) => (
-                  <div key={idx} className="border-l-2 border-gray-200 pl-4">
-                    <div className="flex justify-between items-start mb-1">
-                      <h4 className="font-medium text-gray-900">{cert.title}</h4>
-                      <span className="text-sm text-gray-600">{cert.year}</span>
-                    </div>
-                    <p className="text-sm text-gray-600">{cert.org}</p>
-                    {cert.note && <p className="text-sm text-gray-500 mt-1">{cert.note}</p>}
-                  </div>
-                ))}
-              </div>
-            </section>
-          </div>
-        )}
-
-        {/* Experience Tab */}
-        {activeTab === 'experience' && (
-          <div className="space-y-10">
-            {experiences.map((exp, idx) => (
-              <div key={idx} className="border-l-2 border-gray-200 pl-6">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{exp.title}</h3>
-                    <p className="text-gray-700">{exp.company}</p>
-                  </div>
-                  <span className="text-sm text-gray-600">{exp.period}</span>
-                </div>
-                <p className="text-sm text-gray-600 mb-3">{exp.location}</p>
-                <p className="text-gray-700 mb-3">{exp.description}</p>
-                <ul className="space-y-2">
-                  {exp.highlights.map((highlight, hidx) => (
-                    <li key={hidx} className="text-sm text-gray-600 flex items-start gap-2">
-                      <span className="text-gray-400 mt-1">•</span>
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Projects Tab */}
-        {activeTab === 'projects' && (
-          <div className="space-y-8">
-            {projects.map((project, idx) => (
-              <div key={idx} className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-lg font-semibold text-gray-900">{project.title}</h3>
-                  <a href={project.link} className="text-gray-600 hover:text-gray-900 transition-colors">
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
-                </div>
-                <p className="text-sm text-gray-600 mb-3">{project.period}</p>
-                <p className="text-gray-700 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, tidx) => (
-                    <span key={tidx} className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Contact Tab */}
-        {activeTab === 'contact' && (
-          <div className="max-w-2xl">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6">Get in touch</h3>
-            <p className="text-gray-700 mb-8 leading-relaxed">
-              I'm currently open to new opportunities in AI/ML research and engineering roles. Feel free to reach out if you'd like to discuss potential collaborations, projects, or just want to connect.
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Intro -->
+        <div class="intro">
+            <div class="location">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Banda Aceh, Indonesia</span>
+            </div>
+            <h2 class="intro-title">AI/ML Engineer & Researcher</h2>
+            <p class="intro-text">
+                Recent Computer Engineering graduate with 2+ years of research experience in Artificial Intelligence and Machine Learning. Published researcher in IEEE conference with expertise in deep learning, computer vision, and model optimization.
             </p>
-            <div className="space-y-4">
-              <a href="mailto:techhafiz81@gmail.com" 
-                 className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
-                <Mail className="w-5 h-5" />
-                <div>
-                  <p className="font-medium">Email</p>
-                  <p className="text-sm text-gray-600">techhafiz81@gmail.com</p>
-                </div>
-              </a>
-              <a href="tel:+6285117812061" 
-                 className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
-                <Phone className="w-5 h-5" />
-                <div>
-                  <p className="font-medium">Phone</p>
-                  <p className="text-sm text-gray-600">+62 851-1781-2061</p>
-                </div>
-              </a>
-              <a href="https://linkedin.com/in/muhammadhafiz1206" target="_blank" rel="noopener noreferrer"
-                 className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
-                <Linkedin className="w-5 h-5" />
-                <div>
-                  <p className="font-medium">LinkedIn</p>
-                  <p className="text-sm text-gray-600">linkedin.com/in/muhammadhafiz1206</p>
-                </div>
-              </a>
-              <a href="https://github.com/HyzenTech" target="_blank" rel="noopener noreferrer"
-                 className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
-                <Github className="w-5 h-5" />
-                <div>
-                  <p className="font-medium">GitHub</p>
-                  <p className="text-sm text-gray-600">github.com/HyzenTech</p>
-                </div>
-              </a>
+            <div class="contact-info">
+                <a href="mailto:techhafiz81@gmail.com">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    techhafiz81@gmail.com
+                </a>
+                <a href="tel:+6285117812061">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    +62 851-1781-2061
+                </a>
             </div>
-          </div>
-        )}
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 mt-20">
-        <div className="max-w-4xl mx-auto px-6 py-8 text-center text-sm text-gray-600">
-          <p>© 2024 Muhammad Hafiz. All rights reserved.</p>
         </div>
-      </footer>
-    </div>
-  );
-}
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('about')">About</button>
+            <button class="tab" onclick="showTab('experience')">Experience</button>
+            <button class="tab" onclick="showTab('projects')">Projects</button>
+            <button class="tab" onclick="showTab('contact')">Contact</button>
+        </div>
+
+        <!-- About Tab -->
+        <div id="about" class="tab-content active">
+            <!-- Education -->
+            <section class="section">
+                <h3 class="section-title">Education</h3>
+                <div class="education-item">
+                    <div class="education-header">
+                        <div>
+                            <h4 class="education-school">Universitas Syiah Kuala</h4>
+                            <p class="education-degree">Bachelor of Computer Engineering</p>
+                        </div>
+                        <span class="education-period">Aug. 2019 – Nov. 2024</span>
+                    </div>
+                    <p class="education-meta">GPA: 3.49/4.00 • Banda Aceh, Indonesia</p>
+                    <div>
+                        <p class="coursework-title">Relevant Coursework:</p>
+                        <div class="tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Data Structures & Algorithms</span>
+                            <span class="tag">Software Engineering</span>
+                        </div>
+                    </div>
+                    <div class="exchanges">
+                        <p class="coursework-title">Academic Exchange Programs (Kampus Merdeka):</p>
+                        <div class="exchange-item">
+                            <strong>Universitas AMIKOM Yogyakarta:</strong> Ethical Hacking and Cybersecurity (4.0/4.0)
+                        </div>
+                        <div class="exchange-item">
+                            <strong>Universitas Dian Nuswantoro:</strong> Mobile Computing, Data Mining (3.79/4.0)
+                        </div>
+                        <div class="exchange-item">
+                            <strong>Universitas Gadjah Mada:</strong> Digital Image Processing (3.25/4.0)
+                        </div>
+                        <div class="exchange-item">
+                            <strong>Universitas Indonesia:</strong> Information Security (3.0/4.0)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="section">
+                <h3 class="section-title">Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">Programming</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">ML/AI Frameworks</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">XGBoost</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">Deep Learning</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">CNN</span>
+                            <span class="skill-tag">VGG16</span>
+                            <span class="skill-tag">ResNet50</span>
+                            <span class="skill-tag">Computer Vision</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">Tools</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Google Colab</span>
+                            <span class="skill-tag">Jupyter Notebook</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="section">
+                <h3 class="section-title">Certifications & Achievements</h3>
+                <div class="cert-item">
+                    <div class="cert-header">
+                        <h4 class="cert-title">IEEE Conference Publication</h4>
+                        <span class="cert-year">2024</span>
+                    </div>
+                    <p class="cert-org">IEEE CENIM Conference</p>
+                    <p class="cert-note">Indexed in IEEE Xplore</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-header">
+                        <h4 class="cert-title">TensorFlow Developer Certificate</h4>
+                        <span class="cert-year">2022</span>
+                    </div>
+                    <p class="cert-org">Google</p>
+                    <p class="cert-note">Computer Vision, CNNs, NLP</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-header">
+                        <h4 class="cert-title">Bangkit Academy Graduate</h4>
+                        <span class="cert-year">2022</span>
+                    </div>
+                    <p class="cert-org">Google-led Program</p>
+                    <p class="cert-note">Top 3,100 students</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-header">
+                        <h4 class="cert-title">Machine Learning Specialization</h4>
+                        <span class="cert-year">2022</span>
+                    </div>
+                    <p class="cert-org">Coursera</p>
+                    <p class="cert-note">5 certificates</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Experience Tab -->
+        <div id="experience" class="tab-content">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Research Assistant</h3>
+                        <p class="experience-company">Universitas Syiah Kuala</p>
+                    </div>
+                    <span class="education-period">May 2022 – Nov. 2024</span>
+                </div>
+                <p class="experience-location">Banda Aceh, Indonesia</p>
+                <p class="experience-description">Collaborated with Prof. Dr. Ir. Roslidar on breast thermal image classification research using CNN-XGBoost with VGG16 architecture.</p>
+                <ul class="highlights">
+                    <li>Developed balanced dataset of 1,842 medical images across 3 classes</li>
+                    <li>Achieved 73.17% validation accuracy with ResNet50-XGBoost model</li>
+                    <li>Implemented deep learning pipelines with VGG16 and ResNet50</li>
+                    <li>Co-authored research paper published in 2024 IEEE CENIM Conference</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Machine Learning Student</h3>
+                        <p class="experience-company">Bangkit Academy</p>
+                    </div>
+                    <span class="education-period">Feb. 2022 – Jul. 2022</span>
+                </div>
+                <p class="experience-location">Google-led Program, Indonesia</p>
+                <p class="experience-description">Selected as 1 of 3,100 students for Google's premier academy program focused on developing world-class technical talent.</p>
+                <ul class="highlights">
+                    <li>Completed comprehensive Machine Learning curriculum (5 certificates)</li>
+                    <li>Earned TensorFlow Developer Certificate</li>
+                    <li>Led development of BADI (Business Analytics Daily Income) capstone project</li>
+                    <li>Mastered AI concepts for solving diverse ML problems</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Internship Trainee</h3>
+                        <p class="experience-company">Telkom Indonesia</p>
+                    </div>
+                    <span class="education-period">Jul. 2022 – Aug. 2022</span>
+                </div>
+                <p class="experience-location">Banda Aceh, Indonesia</p>
+                <p class="experience-description">Assigned to Integrated Operation Center (IOC) at Plasa Telkom.</p>
+                <ul class="highlights">
+                    <li>Specialized in IPv6, Remote Ticketing, and Assurance systems</li>
+                    <li>Analyzed and optimized telecommunications services across Aceh region</li>
+                    <li>Gained hands-on experience in network operations and service delivery</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Projects Tab -->
+        <div id="projects" class="tab-content">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Breast Thermal Image Classification System</h3>
+                    <a href="#" class="project-link">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+                <p class="project-period">May 2022 – Nov. 2024</p>
+                <p class="project-description">Developed CNN-XGBoost hybrid model for medical image classification achieving 73%+ validation accuracy. Implemented transfer learning with VGG16 and ResNet50 architectures for enhanced feature extraction.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">XGBoost</span>
+                    <span class="tag">VGG16</span>
+                    <span class="tag">ResNet50</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">BADI (Business Analytics Daily Income)</h3>
+                    <a href="#" class="project-link">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3">
